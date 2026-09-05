@@ -18,7 +18,7 @@ typedef struct properties_t{
     QVector<options_t> options;
 }properties_t;
 
-typedef struct register_t{
+typedef struct mregister_t{
     QString name;
     QString regInfo;
     int bitSize;

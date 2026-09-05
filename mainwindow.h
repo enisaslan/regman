@@ -19,21 +19,21 @@ public:
     ~MainWindow();
     int flag = 0;
 
-    uint64_t input_data = 0;
+    quint64 input_data = 0;
 
-    QVector<register_t> register_list;
+    QVector<mregister_t> register_list;
 
     fileReader* fr;
 
 private slots:
 
-    void print_analsys(QVector<register_t> reg_list, uint64_t reg_data);
+    void print_analsys(QVector<mregister_t> reg_list, quint64 reg_data);
 
     void bit_map_color_set(QVector<int> bits, QColor bitColor);
 
-    void print_bit_map(uint64_t data);
+    void print_bit_map(quint64 data);
 
-    void bit_update(uint8_t bit_number, bool current);
+    void bit_update(quint8 bit_number, bool current);
 
     void on_bit63_released();
 

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -41,7 +42,7 @@ void MainWindow::on_actionOpen_triggered()
 
         for(QStringList strRegisterObject : strRegDataList)
         {
-            register_t register_object;
+            mregister_t register_object;
 
             QString RegName = fr->getRegName(strRegisterObject);
             QString RegInfo = fr->getRegInfo(strRegisterObject);
@@ -89,7 +90,7 @@ void MainWindow::on_actionOpen_triggered()
         }
     }
 
-    for(register_t mreg : register_list)
+    for(mregister_t mreg : register_list)
     {
         //ui->textEdit->append(QString::number(register_list.length()));
         //ui->lbl_reg_info->setText(mreg.regInfo);
@@ -115,7 +116,7 @@ void MainWindow::on_le_input_textChanged(const QString &arg1)
         input_data = 0;
         if(ui->cb_input_type->currentText() == "Decimal")
         {
-            uint64_t int_data = (uint64_t)arg1.toULongLong(&legal, 10);
+            quint64 int_data = (quint64)arg1.toULongLong(&legal, 10);
             if(legal == true)
             {
                 print_bit_map(int_data);
@@ -131,7 +132,7 @@ void MainWindow::on_le_input_textChanged(const QString &arg1)
         }
         else if(ui->cb_input_type->currentText() == "Hex")
         {
-            uint64_t int_data = (uint64_t)arg1.toULongLong(&legal, 16);
+            quint64 int_data = (quint64)arg1.toULongLong(&legal, 16);
             if(legal == true)
             {
                 print_bit_map(int_data);
@@ -147,7 +148,7 @@ void MainWindow::on_le_input_textChanged(const QString &arg1)
         }
         else if(ui->cb_input_type->currentText() == "Binary")
         {
-            uint64_t int_data = (uint64_t)arg1.toULongLong(&legal, 2);
+            quint64 int_data = (quint64)arg1.toULongLong(&legal, 2);
             if(legal == true)
             {
                 print_bit_map(int_data);
@@ -167,7 +168,7 @@ void MainWindow::on_le_input_textChanged(const QString &arg1)
 
 void MainWindow::on_cb_regs_currentIndexChanged(int index)
 {
-    register_t mreg = register_list[index];
+    mregister_t mreg = register_list[index];
     QVector<int> clearBits;
     ui->lbl_reg_info->setText(mreg.regInfo);
 

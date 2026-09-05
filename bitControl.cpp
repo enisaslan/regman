@@ -3,15 +3,15 @@
 #include "QColor"
 #include "QMessageBox"
 
-void MainWindow::print_analsys(QVector<register_t> reg_list, uint64_t reg_data)
+void MainWindow::print_analsys(QVector<mregister_t> reg_list, quint64 reg_data)
 {
-    uint64_t roption = 0;
+    quint64 roption = 0;
     QString strOptBin;
     int propBitCount = 0;
 
     ui->textEdit->clear();
 
-    for(register_t mreg : reg_list)
+    for(mregister_t mreg : reg_list)
     {
         if(ui->cb_regs->currentText() == mreg.name)
         {
@@ -96,10 +96,10 @@ void MainWindow::bit_map_color_set(QVector<int> bits, QColor bitColor)
     }
 }
 
-void MainWindow::print_bit_map(uint64_t data)
+void MainWindow::print_bit_map(quint64 data)
 {
-    uint32_t i;
-    uint32_t b;
+    quint32 i;
+    quint32 b;
     QString bitName;
     QPushButton* pb = NULL;
 
@@ -117,7 +117,7 @@ void MainWindow::print_bit_map(uint64_t data)
             if(pb->objectName() == bitName)
             {
                 // get bit state
-                if((uint64_t)(data >> b) & (uint64_t)1){
+                if((quint64)(data >> b) & (quint64)1){
                     pb->setText("1");
                 }else{
                     pb->setText("0");
@@ -127,14 +127,14 @@ void MainWindow::print_bit_map(uint64_t data)
     }
 }
 
-void MainWindow::bit_update(uint8_t bit_number, bool current)
+void MainWindow::bit_update(quint8 bit_number, bool current)
 {
-    uint64_t current_data = this->input_data;
-    uint64_t sdata;
+    quint64 current_data = this->input_data;
+    quint64 sdata;
     QString strEVal;
 
-    uint64_t one = 1;
-    uint64_t sc = (uint64_t)bit_number;
+    quint64 one = 1;
+    quint64 sc = (quint64)bit_number;
 
 
     sdata = one << sc;
@@ -144,7 +144,7 @@ void MainWindow::bit_update(uint8_t bit_number, bool current)
     }
     else
     {
-        current_data &= (uint64_t)(~sdata);
+        current_data &= (quint64)(~sdata);
     }
 
     if(ui->cb_input_type->currentText()== "Hex")

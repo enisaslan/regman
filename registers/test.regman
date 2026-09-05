@@ -1,0 +1,26 @@
+!!! This is Comment line
+<register>
+register_name=BMCR
+register_info=Basic Mode Control Register
+register_size=16
+    <field>
+        field_name=Links Speed Selection
+        field_bits=13,6
+            <options>
+                register_value=0|00 = 10Mbit
+                register_value=64|01 = 100Mbit
+                register_value=8192|10 = 1000Mbit
+                register_value=8192|11 = Reserved
+            <options/>
+    <field/>
+
+    <field>
+        field_name=Software Reset Status
+        field_bits=15
+            <options>
+                register_value=0|0 = Normal Run Mode
+                register_value=32768|1 = Reset State
+            <options/>
+    <field/>
+
+<register/>
